@@ -53,4 +53,13 @@
         app:layout_constraintStart_toEndOf="@+id/zoom"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <ImageView
+        android:id="@+id/gallery"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/gallery"
+        android:layout_margin="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/zoom"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
