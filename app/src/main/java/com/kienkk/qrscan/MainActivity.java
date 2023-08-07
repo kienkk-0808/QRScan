@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private CodeScanner codeScanner;
     private CodeScannerView codeScannerView;
     private TextView data;
-    private ImageView gallery;
+    private ImageView gallery,create;
     private boolean cameraPermissionGranted = false;
     private SeekBar seekBar;
 
@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void init(){
         gallery = findViewById(R.id.gallery);
+        create = findViewById(R.id.creat);
         codeScannerView = findViewById(R.id.scanner_view);
         data = findViewById(R.id.data);
         seekBar = findViewById(R.id.zoom);
@@ -72,6 +73,11 @@ public class MainActivity extends AppCompatActivity {
                         data.setText(result.getText());
                     }
                 });
+                if((result.getText().contains("http://") || result.getText().contains("https://")) && !result.getText().contains(" ")){
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    i.setData(Uri.parse(result.getText()));
+                    startActivity(i);
+                }
             }
         });
 
@@ -107,6 +113,14 @@ public class MainActivity extends AppCompatActivity {
                 pickImageFromGallery();
             }
         });
+
+        create.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CreateQRCode.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -119,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         codeScanner.releaseResources();
         super.onPause();
+//        data.setText("");
     }
 
     public void checkPermissionCamera(){
@@ -171,6 +186,11 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         data.setText(text);
+        if((text.contains("http://") || text.contains("https://")) && !text.contains(" ")){
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(text));
+            startActivity(i);
+        }
         codeScanner.stopPreview();
     }
 }

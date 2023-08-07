@@ -22,6 +22,7 @@
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scanner_view" />
@@ -61,5 +62,13 @@
         android:layout_margin="30dp"
         app:layout_constraintBottom_toTopOf="@+id/zoom"
         app:layout_constraintEnd_toEndOf="parent" />
+    <ImageView
+        android:id="@+id/creat"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/crearte"
+        android:layout_margin="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/zoom"
+        app:layout_constraintEnd_toStartOf="@id/gallery" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
